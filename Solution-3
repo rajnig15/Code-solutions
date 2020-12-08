@@ -1,0 +1,19 @@
+#object = { "a": {"b" : {"c" : "d"}}}
+#object1= { "x": {"y" : {"z" : "a"}}}
+
+def get_key_values(obj, keys = [], values = []):
+    k = keys
+    v = values
+    for value in obj:
+         if isinstance(obj[value], dict):
+              k.append(value)
+              return get_key_values(obj[value], k, v)
+         else:
+         k.append(value)
+         v.append(obj[value])
+         
+     return k, v
+     
+keys, values = get_key_values(object1)
+print(keys)
+print(values)
